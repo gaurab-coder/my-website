@@ -3,46 +3,32 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Gaurab Khadka - Extraordinary 3D Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <title>Gaurab Khadka - Creative Developer</title>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Poppins:wght@300;400;500;600;700&display=swap');
-        
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
         }
-        @media(max-width:768px)
-        {
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 180px;
-        }
-        }
-        @media (max-width: 768px) {
-    #projects .section-title {
-        font-size: clamp(3.8rem, 11vw, 5.5rem);
-        margin-bottom: 15px;
-    }
-}
 
         body {
             font-family: 'Poppins', sans-serif;
-            background: linear-gradient(-45deg, #0a0a23, #1a1a3e, #16213e, #0f0f23);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
-            color: white;
+            background: linear-gradient(135deg, #0c1422 0%, #1a1f3a 50%, #1e2a44 100%);
+            color: #d1d5db;
             overflow-x: hidden;
+            line-height: 1.5;
+            perspective: 800px;
         }
-        
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 20px;
         }
-        
-        /* 3D Particle System */
+
+        /* Subtle Floating Particles */
         .particles {
             position: fixed;
             top: 0;
@@ -50,545 +36,648 @@
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: -1;
+            z-index: 1;
         }
-        
+
         .particle {
             position: absolute;
-            background: radial-gradient(circle, rgba(255,107,107,0.6) 0%, transparent 70%);
+            width: 35px;
+            height: 35px;
+            background: radial-gradient(circle, rgba(100,180,255,0.12) 0%, transparent 70%);
             border-radius: 50%;
-            animation: particleFloat 20s linear infinite;
+            animation: float 30s infinite linear;
         }
-        
-        .particle:nth-child(1) { width: 80px; height: 80px; top: 10%; left: 10%; animation-delay: 0s; animation-duration: 25s; }
-        .particle:nth-child(2) { width: 120px; height: 120px; top: 60%; right: 10%; animation-delay: -5s; animation-duration: 30s; background: radial-gradient(circle, rgba(78,205,196,0.6) 0%, transparent 70%); }
-        .particle:nth-child(3) { width: 60px; height: 60px; bottom: 20%; left: 20%; animation-delay: -10s; animation-duration: 22s; }
-        .particle:nth-child(4) { width: 100px; height: 100px; top: 30%; right: 20%; animation-delay: -15s; animation-duration: 28s; background: radial-gradient(circle, rgba(69,183,209,0.6) 0%, transparent 70%); }
-        .particle:nth-child(5) { width: 40px; height: 40px; bottom: 40%; left: 60%; animation-delay: -8s; animation-duration: 18s; }
-        
-        @keyframes particleFloat {
-            0% {
-                transform: translateY(0px) translateX(0px) rotate(0deg) scale(1);
-                opacity: 0.8;
-            }
-            33% {
-                transform: translateY(-100px) translateX(50px) rotate(120deg) scale(1.2);
-                opacity: 0.4;
-            }
-            66% {
-                transform: translateY(-50px) translateX(-30px) rotate(240deg) scale(0.8);
-                opacity: 0.6;
-            }
-            100% {
-                transform: translateY(0px) translateX(0px) rotate(360deg) scale(1);
-                opacity: 0.8;
-            }
+
+        .particle:nth-child(1) { top: 15%; left: 10%; animation-delay: 0s; }
+        .particle:nth-child(2) { top: 65%; right: 20%; animation-delay: -10s; }
+        .particle:nth-child(3) { bottom: 25%; left: 75%; animation-delay: -20s; }
+
+        @keyframes float {
+            0% { transform: translateY(0px) translateZ(-80px); }
+            50% { transform: translateY(-25px) translateZ(0px); }
+            100% { transform: translateY(0px) translateZ(-80px); }
         }
-        
-        /* Enhanced Navbar */
-        .navbar {
-            position: fixed;
-            top: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: rgba(10,10,35,0.95);
-            backdrop-filter: blur(25px);
-            padding: 18px 50px;
-            border-radius: 60px;
-            z-index: 1000;
-            border: 2px solid rgba(255,107,107,0.3);
-            box-shadow: 
-                0 25px 50px rgba(255,107,107,0.2),
-                inset 0 1px 0 rgba(255,255,255,0.2);
-            transition: all 0.6s cubic-bezier(0.23, 1, 0.320, 1);
-        }
-        
-        .navbar:hover {
-            box-shadow: 
-                0 35px 70px rgba(255,107,107,0.4),
-                inset 0 1px 0 rgba(255,255,255,0.3);
-            transform: translateX(-50%) translateY(-10px) scale(1.02);
-            border-color: rgba(78,205,196,0.5);
-        }
-        
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 40px;
-        }
-        
-        .nav-links a {
-            color: rgba(255,255,255,0.9);
-            text-decoration: none;
-            font-family: 'Orbitron', monospace;
-            font-weight: 800;
-            font-size: 15px;
-            letter-spacing: 3px;
-            position: relative;
-            text-transform: uppercase;
-            transition: all 0.4s ease;
-        }
-        
-        .nav-links a::before {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            width: 0;
-            height: 3px;
-            background: linear-gradient(90deg, #ff6b6b, #4ecdc4, #45b7d1);
-            border-radius: 2px;
-            transition: all 0.4s ease;
-            transform: translateX(-50%);
-            box-shadow: 0 0 10px rgba(255,107,107,0.8);
-        }
-        
-        .nav-links a:hover::before {
-            width: 120%;
-            animation: navGlow 0.6s ease;
-        }
-        
-        @keyframes navGlow {
-            0% { box-shadow: 0 0 10px rgba(255,107,107,0.8); }
-            50% { box-shadow: 0 0 25px rgba(78,205,196,1); }
-            100% { box-shadow: 0 0 10px rgba(255,107,107,0.8); }
-        }
-        
-        .nav-links a:hover {
-            color: #ff6b6b;
-            text-shadow: 0 0 20px rgba(255,107,107,0.8);
-        }
-        
-        /* Super Attractive Profile Picture */
-        .profile-pic {
-            position: fixed;
-            top: 250px;
-            right: 60px;
-            width: 200px;
-            height: 200px;
-            border-radius: 50%;
-            border: 5px solid transparent;
-            background: linear-gradient(45deg, #ff6b6b, #4ecdc4, #45b7d1, #ff6b6b) border-box;
-            mask: radial-gradient(ellipse 70% 70% at center, black 60%, transparent 65%);
-            -webkit-mask: radial-gradient(ellipse 70% 70% at center, black 60%, transparent 65%);
-            box-shadow: 
-                0 0 40px rgba(255,107,107,0.6),
-                0 0 80px rgba(78,205,196,0.4),
-                inset 0 0 40px rgba(255,255,255,0.2);
-            object-fit: cover;
-            z-index: 999;
-            animation: profilePulse 2.5s ease-in-out infinite alternate;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-        }
-        
-        .profile-pic:hover {
-            transform: scale(1.15) rotate(360deg);
-            box-shadow: 
-                0 0 60px rgba(255,107,107,0.9),
-                0 0 120px rgba(78,205,196,0.7),
-                inset 0 0 50px rgba(255,255,255,0.3);
-            filter: saturate(1.4) brightness(1.2);
-        }
-        
-        @keyframes profilePulse {
-            0% { 
-                box-shadow: 
-                    0 0 40px rgba(255,107,107,0.6),
-                    0 0 80px rgba(78,205,196,0.4),
-                    inset 0 0 40px rgba(255,255,255,0.2);
-                transform: scale(1);
-            }
-            100% { 
-                box-shadow: 
-                    0 0 60px rgba(255,107,107,0.8),
-                    0 0 100px rgba(78,205,196,0.6),
-                    inset 0 0 50px rgba(255,255,255,0.3);
-                transform: scale(1.05);
-            }
-        }
-        
-        /* Sections */
-        .section {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            padding: 120px 5%;
-            position: relative;
-            transform-style: preserve-3d;
-        }
-        
-        .section-content {
-            max-width: 1000px;
+
+        /* Hero */
+        .hero {
             text-align: center;
-            transform: translateZ(80px);
+            padding: 50px 20px 30px;
+            transform: translateZ(25px);
         }
-        
-        /* Mega Typography */
-        .section-title {
+
+        .profile-pic {
+            width: 170px;
+            height: 170px;
+            border-radius: 60%;
+            border: 3px solid rgba(100,180,255,0.4);
+            box-shadow: 0 0 30px rgba(100,180,255,0.25);
+            margin: 0 auto 20px;
+            object-fit: cover;
+            display: block;
+            background: linear-gradient(135deg, #1a1f3a, #0c1422);
+        }
+
+        .hero h1 {
             font-family: 'Orbitron', monospace;
-            font-size: clamp(5rem, 12vw, 10rem);
-            font-weight: 900;
-            background: linear-gradient(135deg, #ff6b6b 0%, #4ecdc4 25%, #45b7d1 50%, #f9ca24 75%, #ff6b6b 100%);
-            background-size: 300% 300%;
+            font-size: clamp(2.3rem, 5.5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(90deg, #64b5f6, #ab47bc, #81c784);
+            background-size: 300% 100%;
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
             background-clip: text;
-            margin-bottom: 25px;
-            text-shadow: 
-                0 0 40px rgba(255,107,107,0.8),
-                0 0 80px rgba(78,205,196,0.6);
-            animation: titleRainbow 4s ease-in-out infinite, titleFloat 6s ease-in-out infinite;
-            position: relative;
+            margin-bottom: 12px;
+            animation: gradientShift 6s ease infinite;
         }
-        
-        @keyframes titleRainbow {
-            0% { background-position: 0% 50%; }
+
+        @keyframes gradientShift {
+            0%, 100% { background-position: 0% 50%; }
             50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
         }
-        
-        @keyframes titleFloat {
-            0%, 100% { transform: translateY(0px) translateZ(0px) rotateX(0deg); }
-            50% { transform: translateY(-30px) translateZ(30px) rotateX(5deg); }
+
+        .tagline {
+            font-size: clamp(0.95rem, 2.3vw, 1.3rem);
+            font-weight: 300;
+            color: #9ca3af;
+            margin-bottom: 25px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
         }
-        
-        .subtitle {
-            font-size: clamp(2rem, 5vw, 3.5rem);
-            background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(78,205,196,0.8));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 40px;
-            font-weight: 400;
-            letter-spacing: 2px;
-            animation: subtitleGlow 3s ease-in-out infinite alternate;
-        }
-        
-        @keyframes subtitleGlow {
-            from { filter: drop-shadow(0 0 10px rgba(78,205,196,0.5)); }
-            to { filter: drop-shadow(0 0 25px rgba(255,107,107,0.8)); }
-        }
-        
-        .description {
-            font-size: 1.4rem;
-            line-height: 1.9;
-            color: rgba(255,255,255,0.85);
-            max-width: 700px;
-            margin: 0 auto 60px;
-            backdrop-filter: blur(10px);
-        }
-        
-        /* NEW UNIQUE SOCIAL ICON COLORS */
-        .social-links {
+
+        .buttons {
             display: flex;
-            gap: 25px;
+            gap: 15px;
             justify-content: center;
             flex-wrap: wrap;
-            margin-top: 60px;
-            perspective: 1000px;
         }
-        
+
+        .btn {
+            padding: 12px 28px;
+            border: none;
+            border-radius: 25px;
+            font-weight: 500;
+            text-decoration: none;
+            backdrop-filter: blur(12px);
+            transition: all 0.3s ease;
+            font-size: 0.9rem;
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .btn-primary {
+            background: rgba(100,180,255,0.12);
+            color: #64b5f6;
+            border: 1px solid rgba(100,180,255,0.3);
+        }
+
+        .btn-secondary {
+            background: rgba(171,71,188,0.12);
+            color: #ab47bc;
+            border: 1px solid rgba(171,71,188,0.3);
+        }
+
+        .btn:hover {
+            transform: translateZ(15px) scale(1.03);
+            box-shadow: 0 8px 25px rgba(100,180,255,0.2);
+        }
+
+        /* Compact Grid Sections */
+        .sections {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+            padding: 0 5px 30px;
+        }
+
+        .section {
+            background: rgba(255,255,255,0.025);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(100,180,255,0.12);
+            border-radius: 18px;
+            padding: 22px;
+            transition: all 0.3s ease;
+            transform-style: preserve-3d;
+        }
+
+        .section:hover {
+            transform: translateZ(12px);
+            border-color: rgba(100,180,255,0.3);
+            box-shadow: 0 12px 35px rgba(100,180,255,0.12);
+        }
+
+        .section h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.25rem;
+            background: linear-gradient(90deg, #64b5f6, #81c784);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            margin-bottom: 16px;
+            font-weight: 700;
+        }
+
+        /* About - Updated Description */
+        .about p {
+            font-size: 0.92rem;
+            line-height: 1.45;
+            color: #9ca3af;
+            margin-bottom: 6px;
+        }
+
+        /* GitHub Section */
+        .github-section {
+            text-align: center;
+        }
+
+        .github-text {
+            color: #9ca3af;
+            font-size: 0.95rem;
+            margin-bottom: 18px;
+            line-height: 1.6;
+        }
+
+        .github-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 24px;
+            background: rgba(100,180,255,0.12);
+            color: #64b5f6;
+            text-decoration: none;
+            border-radius: 25px;
+            border: 1px solid rgba(100,180,255,0.3);
+            font-weight: 500;
+            transition: all 0.3s ease;
+            font-size: 0.92rem;
+        }
+
+        .github-link:hover {
+            transform: translateZ(10px) scale(1.02);
+            background: rgba(100,180,255,0.2);
+            box-shadow: 0 8px 25px rgba(100,180,255,0.2);
+        }
+
+        /* Skills & Tools */
+        .skills-grid, .tools-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(75px, 1fr));
+            gap: 10px;
+        }
+
+        .skill-item, .tool-item {
+            text-align: center;
+            padding: 12px 6px;
+            border-radius: 12px;
+            transition: all 0.3s ease;
+            cursor: default;
+        }
+
+        .skill-item {
+            background: rgba(100,180,255,0.08);
+            border: 1px solid rgba(100,180,255,0.2);
+        }
+
+        .skill-item:hover {
+            background: rgba(100,180,255,0.15);
+            transform: translateZ(8px);
+            box-shadow: 0 5px 15px rgba(100,180,255,0.15);
+        }
+
+        .tool-item {
+            background: rgba(129,199,132,0.08);
+            border: 1px solid rgba(129,199,132,0.2);
+        }
+
+        .tool-item:hover {
+            background: rgba(129,199,132,0.15);
+            transform: translateZ(8px);
+            box-shadow: 0 5px 15px rgba(129,199,132,0.15);
+        }
+
+        .skill-item i, .tool-item i {
+            font-size: 1.3rem;
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .skill-item i {
+            color: #64b5f6;
+        }
+
+        .tool-item i {
+            color: #81c784;
+        }
+
+        .skill-item span, .tool-item span {
+            font-size: 0.72rem;
+            color: #9ca3af;
+            display: block;
+        }
+
+        /* Contact Form */
+        .contact {
+            grid-column: 1 / -1;
+            padding: 25px;
+            background: rgba(255,255,255,0.02);
+            backdrop-filter: blur(15px);
+            border-radius: 20px;
+            border: 1px solid rgba(171,71,188,0.15);
+            margin-top: 15px;
+        }
+
+        .contact h2 {
+            font-family: 'Orbitron', monospace;
+            font-size: 1.3rem;
+            background: linear-gradient(90deg, #ab47bc, #64b5f6);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .form-group label {
+            font-size: 0.85rem;
+            color: #9ca3af;
+            margin-bottom: 6px;
+            font-weight: 500;
+        }
+
+        .form-group input, .form-group textarea {
+            padding: 12px;
+            background: rgba(255,255,255,0.05);
+            border: 1px solid rgba(100,180,255,0.2);
+            border-radius: 12px;
+            color: #e5e7eb;
+            font-family: inherit;
+            font-size: 0.9rem;
+            backdrop-filter: blur(10px);
+            transition: all 0.3s ease;
+        }
+
+        .form-group input::placeholder, .form-group textarea::placeholder {
+            color: #6b7280;
+        }
+
+        .form-group input:focus, .form-group textarea:focus {
+            outline: none;
+            border-color: rgba(100,180,255,0.5);
+            box-shadow: 0 0 0 3px rgba(100,180,255,0.1);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 85px;
+            grid-column: 1 / -1;
+            margin-top: 5px;
+        }
+
+        .form-row {
+            display: flex;
+            gap: 10px;
+            align-items: end;
+        }
+
+        .error-msg, .success-msg {
+            font-size: 0.8rem;
+            margin-top: 5px;
+            padding: 8px 12px;
+            border-radius: 8px;
+            display: none;
+        }
+
+        .error-msg {
+            background: rgba(239,68,68,0.2);
+            color: #f87171;
+            border: 1px solid rgba(239,68,68,0.3);
+        }
+
+        .success-msg {
+            background: rgba(34,197,94,0.2);
+            color: #4ade80;
+            border: 1px solid rgba(34,197,94,0.3);
+        }
+
+        .form-btn {
+            width: 100%;
+            padding: 14px;
+            background: linear-gradient(135deg, rgba(100,180,255,0.15), rgba(171,71,188,0.15));
+            color: #64b5f6;
+            border: 1px solid rgba(100,180,255,0.3);
+            border-radius: 25px;
+            font-weight: 500;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            grid-column: 1 / -1;
+        }
+
+        .form-btn:hover:not(:disabled) {
+            background: linear-gradient(135deg, rgba(100,180,255,0.25), rgba(171,71,188,0.25));
+            transform: translateZ(10px);
+            box-shadow: 0 8px 25px rgba(100,180,255,0.2);
+        }
+
+        .form-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+        }
+
+        /* Social Grid */
+        .social-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(55px, 1fr));
+            gap: 12px;
+            margin-bottom: 18px;
+            max-width: 350px;
+            margin: 0 auto 15px;
+        }
+
         .social-link {
+            width: 52px;
+            height: 52px;
+            border-radius: 14px;
             display: flex;
             align-items: center;
             justify-content: center;
-            width: 75px;
-            height: 75px;
-            border-radius: 50%;
-            border: 3px solid transparent;
-            color: white;
-            font-size: 1.8rem;
-            text-decoration: none;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-style: preserve-3d;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        /* Platform-specific gradient backgrounds */
-        .social-link.github {
-            background: linear-gradient(135deg, #24292e 0%, #384d54 50%, #24292e 100%);
-            box-shadow: 0 10px 30px rgba(36, 41, 46, 0.6);
-        }
-        
-        .social-link.twitter {
-            background: linear-gradient(135deg, #1d9bf0 0%, #0d8bd9 50%, #1d9bf0 100%);
-            box-shadow: 0 10px 30px rgba(29, 155, 240, 0.6);
-        }
-        
-        .social-link.linkedin {
-            background: linear-gradient(135deg, #0077b5 0%, #005885 50%, #0077b5 100%);
-            box-shadow: 0 10px 30px rgba(0, 119, 181, 0.6);
-        }
-        
-        .social-link.instagram {
-            background: linear-gradient(135deg, #e4405f 0%, #f77737 25%, #fddc5f 50%, #4dedb5 75%, #e4405f 100%);
-            box-shadow: 0 10px 30px rgba(228, 64, 95, 0.6);
-        }
-        
-        .social-link.email {
-            background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 50%, #ff6b6b 100%);
-            box-shadow: 0 10px 30px rgba(255, 107, 107, 0.6);
-        }
-        
-        .social-link.github::before,
-        .social-link.twitter::before,
-        .social-link.linkedin::before,
-        .social-link.instagram::before,
-        .social-link.email::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            border-radius: 50%;
-            padding: 3px;
-            background: linear-gradient(45deg, rgba(255,255,255,0.9), rgba(255,255,255,0.3));
-            -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            -webkit-mask-composite: xor;
-            mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
-            mask-composite: exclude;
-            opacity: 0;
-            transition: opacity 0.4s ease;
-        }
-        
-        .social-link:hover::before {
-            opacity: 1;
-        }
-        
-        .social-link:hover {
-            transform: translateY(-25px) translateZ(60px) rotateY(720deg) scale(1.25);
-            box-shadow: 
-                0 35px 70px rgba(255,255,255,0.3),
-                0 0 50px rgba(255,255,255,0.2),
-                inset 0 0 20px rgba(255,255,255,0.1);
-            filter: brightness(1.2) saturate(1.3);
-        }
-        
-        /* Skills Grid */
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-top: 80px;
-            perspective: 1000px;
-        }
-        
-        .skill-item {
             background: rgba(255,255,255,0.06);
-            backdrop-filter: blur(25px);
-            padding: 40px 25px;
-            border-radius: 25px;
-            border: 2px solid rgba(255,255,255,0.15);
-            position: relative;
-            overflow: hidden;
-            transition: all 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            transform-style: preserve-3d;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(100,180,255,0.18);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            font-size: 1.25rem;
+            color: #64b5f6;
         }
-        
-        .skill-item::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
-            transition: left 0.6s ease;
+
+        .social-link:hover {
+            transform: translateZ(12px) scale(1.08);
+            background: rgba(100,180,255,0.15);
+            box-shadow: 0 6px 20px rgba(100,180,255,0.18);
         }
-        
-        .skill-item:hover::before {
-            left: 100%;
-        }
-        
-        .skill-item:hover {
-            transform: translateY(-25px) translateZ(60px) rotateX(15deg) scale(1.05);
-            box-shadow: 
-                0 40px 80px rgba(78,205,196,0.4),
-                0 0 50px rgba(255,107,107,0.3);
-            border-color: rgba(255,107,107,0.5);
-        }
-        
-        .skill-icon {
-            font-size: 4rem;
-            background: linear-gradient(135deg, #ff6b6b, #4ecdc4);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-            margin-bottom: 20px;
-            filter: drop-shadow(0 0 20px rgba(255,107,107,0.5));
-        }
-        
-        .skill-item h3 {
-            font-family: 'Orbitron', monospace;
-            font-size: 1.4rem;
-            margin-bottom: 10px;
-            letter-spacing: 1px;
-        }
-        
+
         /* Responsive */
         @media (max-width: 768px) {
-            .navbar {
-                top: 20px;
-                padding: 15px 30px;
-                border-radius: 40px;
+            .container { padding: 15px; }
+            .sections {
+                grid-template-columns: 1fr;
+                gap: 18px;
             }
-            
-            .profile-pic {
-                top: 60px;
-                right: 30px;
-                width: 140px;
-                height: 140px;
-            }
-            
-            .nav-links {
-                gap: 20px;
-            }
-            
-            .nav-links a {
-                font-size: 13px;
-                letter-spacing: 1px;
-            }
-            
-            .section {
-                padding: 100px 20px;
-            }
-            
-            .social-links {
-                gap: 20px;
-            }
-            
-            .social-link {
-                width: 60px;
-                height: 60px;
-                font-size: 1.4rem;
-            }
+            .hero { padding: 35px 15px 25px; }
+            .form-grid { grid-template-columns: 1fr; gap: 12px; }
+            .form-row { flex-direction: column; gap: 0; }
+            .social-grid { grid-template-columns: repeat(2, 1fr); gap: 10px; }
+            .buttons { gap: 12px; flex-direction: column; align-items: center; }
+            .btn { padding: 12px 24px; width: 200px; justify-content: center; }
+        }
+
+        @media (max-width: 480px) {
+            .profile-pic { width: 110px; height: 110px; }
+            .hero h1 { font-size: 2.2rem; }
+            .tagline { font-size: 1rem; }
+            .section { padding: 18px; }
         }
     </style>
 </head>
 <body>
-    <!-- Animated Particles Background -->
-    <div class="particles">
-        <div class="particle"></div>
-        <div class="particle"></div>
+    <!-- Light Blue Particles -->
+    <div class="particles" aria-hidden="true">
         <div class="particle"></div>
         <div class="particle"></div>
         <div class="particle"></div>
     </div>
 
-    <!-- Profile Picture -->
-    <img src="https://avatars.githubusercontent.com/u/201885846?v=4" alt="Gaurab Khadka" class="profile-pic">
+    <div class="container">
+        <!-- Hero -->
+        <section class="hero">
+            <!-- REPLACE WITH YOUR PROFILE PIC URL -->
+            <img src="https://avatars.githubusercontent.com/u/201885846?v=4" alt="Gaurab Khadka" class="profile-pic">
 
-    <!-- Navbar -->
-    <nav class="navbar">
-        <ul class="nav-links">
-            <li><a href="#home">HOME</a></li>
-            <li><a href="#about">ABOUT</a></li>
-            <li><a href="#skills">SKILLS</a></li>
-            <li><a href="#projects">PROJECTS</a></li>
-            <li><a href="#contact">CONTACT</a></li>
-        </ul>
-    </nav>
-
-    <!-- Home -->
-    <section class="section" id="home">
-        <div class="section-content">
-            <h1 class="section-title">GAURAB</h1>
-            <p class="subtitle">KHADKA</p>
-            <div class="social-links">
-                <a href="https://github.com/gaurab-coder" class="social-link github" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/Gaurab200" class="social-link twitter" target="_blank" title="X/Twitter"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/gaurab-khadka-299096376/" class="social-link linkedin" target="_blank" title="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/gaurab3915/" class="social-link instagram" target="_blank" title="Instagram"><i class="fab fa-instagram"></i></a>
+            <h1>Gaurab Khadka</h1>
+            <p class="tagline">Creative Developer: Weaving Code into Digital Dreams</p>
+            <div class="buttons">
+                <a href="#github" class="btn btn-primary">
+                    <i class="fab fa-github"></i> GitHub
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-envelope"></i> Connect
+                </a>
             </div>
-        </div>
-    </section>
+        </section>
 
-    <!-- About -->
-    <section class="section" id="about">
-        <div class="section-content">
-            <h1 class="section-title">CURIOUS</h1>
-            <p class="subtitle">DEVELOPER</p>
-            <p class="description">BCA Student from Bhaktapur, Nepal. Mastering HTML, CSS, C, Java, Git & GitHub. Building extraordinary 3D experiences with pure frontend skills. Passionate about clean code and creative designs.</p>
-            <div class="social-links">
-                <a href="https://github.com/gaurab-coder" class="social-link github" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/Gaurab200" class="social-link twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/gaurab-khadka-299096376/" class="social-link linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/gaurab3915/" class="social-link instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <!-- Sections Grid -->
+        <div class="sections">
+            <!-- Updated About -->
+            <div class="section about">
+                <h2>About</h2>
+                <p>BCA Student from Bhaktapur, Nepal. Mastering HTML, CSS, C, Java, Git & GitHub. Building extraordinary 3D experiences with pure frontend skills. Passionate about clean code and creative designs.</p>
             </div>
-        </div>
-    </section>
 
-    <!-- Skills -->
-    <section class="section" id="skills">
-        <div class="section-content">
-            <h1 class="section-title">SKILLS</h1>
-            <p class="subtitle">HTML • CSS • C • Java • GitHub</p>
-            <div class="skills-grid">
-                <div class="skill-item">
-                    <div class="skill-icon"><i class="fab fa-html5"></i></div>
-                    <h3>HTML5</h3>
-                    <p>Semantic markup</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon"><i class="fab fa-css3-alt"></i></div>
-                    <h3>CSS3</h3>
-                    <p>3D Animations</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon"><i class="fas fa-code"></i></div>
-                    <h3>C Programming</h3>
-                    <p>Structured Code</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon"><i class="fab fa-java"></i></div>
-                    <h3>Java</h3>
-                    <p>OOP Concepts</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon"><i class="fab fa-git-alt"></i></div>
-                    <h3>Git</h3>
-                    <p>Version Control</p>
-                </div>
-                <div class="skill-item">
-                    <div class="skill-icon"><i class="fab fa-github"></i></div>
-                    <h3>GitHub</h3>
-                    <p>Portfolio</p>
+            <!-- GitHub Section -->
+            <div class="section github-section" id="github">
+                <h2>Projects</h2>
+                <p class="github-text">Check my GitHub for source code. Explore my repositories built with HTML, CSS, C, Java on <strong>github.com/gaurab-coder</strong></p>
+                <a href="https://github.com/gaurab-coder" target="_blank" class="github-link">
+                    <i class="fab fa-github"></i>
+                    View GitHub →
+                </a>
+            </div>
+
+            <!-- Skills -->
+            <div class="section">
+                <h2>Skills</h2>
+                <div class="skills-grid">
+                    <div class="skill-item">
+                        <i class="fab fa-html5"></i>
+                        <span>HTML/CSS</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-js-square"></i>
+                        <span>JavaScript</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-python"></i>
+                        <span>Python</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-database"></i>
+                        <span>SQL</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fab fa-java"></i>
+                        <span>Java</span>
+                    </div>
+                    <div class="skill-item">
+                        <i class="fas fa-copyright"></i>
+                        <span>C</span>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <!-- Projects -->
-    <section class="section" id="projects">
-        <div class="section-content">
-            <h1 class="section-title"> PROJECTS</h1>
-            <p class="subtitle">   Check my GitHub for source code</p>
-            <div class="social-links" style="margin-top: 40px;">
-                <a href="https://github.com/gaurab-coder" class="social-link github" target="_blank" style="font-size: 2.3rem;"><i class="fab fa-github"></i></a>
+            <!-- Tools -->
+            <div class="section">
+                <h2>Tools</h2>
+                <div class="tools-grid">
+                    <div class="tool-item">
+                        <i class="fab fa-git-alt"></i>
+                        <span>Git</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fab fa-github"></i>
+                        <span>GitHub</span>
+                    </div>
+                    <div class="tool-item">
+                        <i class="fas fa-code"></i>
+                        <span>VS Code</span>
+                    </div>
+                    <div class="tool-item">
+                        <!--i class="fab fa-laptop-code"></i-->
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/intellij/intellij-original.svg" alt="IntelliJ">
+                        <span>IntelliJ IDEA</span>
+                    </div>
+                    <div class="tool-item">
+                        <!--i class="fas fa-canva"></i-->
+                        <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/canva/canva-original.svg" alt="Canva">
+                        <span>Canva</span>
+                    </div>
+                </div>
             </div>
-            <p class="description" style="margin-top: 30px;">   Explore my repositories built with HTML, CSS, C, Java on <strong>github.com/gaurab-coder</strong></p>
         </div>
-    </section>
 
-    <!-- Contact -->
-    <section class="section" id="contact">
-        <div class="section-content">
-            <h1 class="section-title">CONNECT</h1>
-            <p class="subtitle">Bhaktapur, Nepal</p>
-            <div class="social-links">
-                <a href="mailto:khadkagaurab82@gmail.com" class="social-link email" title="Email"><i class="fas fa-envelope"></i></a>
-                <a href="https://github.com/gaurab-coder" class="social-link github" target="_blank"><i class="fab fa-github"></i></a>
-                <a href="https://x.com/Gaurab200" class="social-link twitter" target="_blank"><i class="fab fa-twitter"></i></a>
-                <a href="https://www.linkedin.com/in/gaurab-khadka-299096376/" class="social-link linkedin" target="_blank"><i class="fab fa-linkedin-in"></i></a>
-                <a href="https://www.instagram.com/gaurab3915/" class="social-link instagram" target="_blank"><i class="fab fa-instagram"></i></a>
+        <!-- Contact Form with Validation & EmailJS -->
+        <section class="contact" id="contact">
+            <h2>Connect With Me</h2>
+            
+            <!-- Social Links -->
+            <div class="social-grid">
+                <a href="https://github.com/gaurab-coder" class="social-link" target="_blank" aria-label="GitHub">
+                    <i class="fab fa-github"></i>
+                </a>
+                <a href="https://x.com/Gaurab200" class="social-link" target="_blank" aria-label="X">
+                    <i class="fab fa-x-twitter"></i>
+                </a>
+                <a href="https://www.linkedin.com/in/gaurab-khadka-299096376/" class="social-link" target="_blank" aria-label="LinkedIn">
+                    <i class="fab fa-linkedin-in"></i>
+                </a>
+                <a href="https://www.instagram.com/gaurab3915/" class="social-link" target="_blank" aria-label="Instagram">
+                    <i class="fab fa-instagram"></i>
+                </a>
             </div>
-        </div>
-    </section>
+
+            <!-- Contact Form -->
+            <form id="contactForm" class="contact-form">
+                <div class="form-grid">
+                    <div class="form-group">
+                        <label>Mobile Number</label>
+                        <input type="tel" id="mobile" name="mobile" placeholder="98xxxxxxxx" pattern="[0-9]{10}" maxlength="10" required>
+                        <div id="mobileError" class="error-msg"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Email</label>
+                        <input type="email" id="email" name="email" placeholder="your@email.com" required>
+                        <div id="emailError" class="error-msg"></div>
+                    </div>
+                    <div class="form-group">
+                        <label>Message</label>
+                        <textarea id="message" name="message" placeholder="Tell me about your project..." required></textarea>
+                    </div>
+                </div>
+                <div id="formMessage" class="success-msg"></div>
+                <button type="submit" id="formBtn" class="form-btn">Send Message</button>
+            </form>
+        </section>
+    </div>
+
+    <!-- EmailJS SDK -->
+    <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js"></script>
+    <script>
+        // Replace with your EmailJS credentials (get free account at emailjs.com)
+        emailjs.init("MXBZ7UO9c-X3Qfk82"); // Replace YOUR_PUBLIC_KEY
+
+        const form = document.getElementById('contactForm');
+        const mobileInput = document.getElementById('mobile');
+        const emailInput = document.getElementById('email');
+        const formBtn = document.getElementById('formBtn');
+        const formMessage = document.getElementById('formMessage');
+
+        // Mobile number validation (only digits, exactly 10)
+        mobileInput.addEventListener('input', function() {
+            this.value = this.value.replace(/\D/g, ''); // Only digits
+            if (this.value.length > 10) this.value = this.value.slice(0, 10);
+        });
+
+        mobileInput.addEventListener('blur', function() {
+            const mobileError = document.getElementById('mobileError');
+            if (this.value && this.value.length !== 10) {
+                mobileError.textContent = 'Please enter valid 10-digit mobile number';
+                mobileError.style.display = 'block';
+            } else {
+                mobileError.style.display = 'none';
+            }
+        });
+
+        // Email validation
+        emailInput.addEventListener('blur', function() {
+            const emailError = document.getElementById('emailError');
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value && !emailRegex.test(this.value)) {
+                emailError.textContent = 'Please enter valid email format';
+                emailError.style.display = 'block';
+            } else {
+                emailError.style.display = 'none';
+            }
+        });
+
+        // Form submission
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const mobileError = document.getElementById('mobileError');
+            const emailError = document.getElementById('emailError');
+            
+            // Final validation
+            if (mobileInput.value.length !== 10) {
+                mobileError.textContent = 'Please enter valid 10-digit mobile number';
+                mobileError.style.display = 'block';
+                return;
+            }
+            if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(emailInput.value)) {
+                emailError.textContent = 'Please enter valid email format';
+                emailError.style.display = 'block';
+                return;
+            }
+
+            formBtn.disabled = true;
+            formBtn.textContent = 'Sending...';
+
+            // EmailJS service (replace with your details)
+            emailjs.sendForm('MXBZ7UO9c-X3Qfk82', 'template_g5yqui7', this)
+                .then(() => {
+                    formMessage.textContent = 'Message sent successfully! I\'ll reply soon.';
+                    formMessage.style.display = 'block';
+                    form.reset();
+                }, (error) => {
+                    console.error('EmailJS error:', error);
+                    formMessage.textContent = 'Something went wrong. Please try again.';
+                    formMessage.style.display = 'block';
+                })
+                .finally(() => {
+                    formBtn.disabled = false;
+                    formBtn.textContent = 'Send Message';
+                });
+        });
+    </script>
 </body>
 </html>
-
-
-
-
-
-
